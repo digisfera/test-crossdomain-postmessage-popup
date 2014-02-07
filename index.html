@@ -1,15 +1,31 @@
+<!doctype HTML>
 <html>
-<body>
 
+<body>
   <a onclick="openPopup()" href="#">fdf</a>
   <script>
     function openPopup() {
-      w = window.open('iframer.html');
+      w = window.open('#iframe'); //for simpler test use iframer.html
       window.addEventListener('message', function(m) {
-        console.log("IT WORKED!", m)
+        console.log("IT WORKED!", m.data)
       });
     }
   </script>
+
+<script>
+  if(window.location.hash == '#iframe') {
+    var code = "";
+    code += "<iframe id='myframe' src='http://script.test/redirectingIframe.html' width='40' height='40'></iframe>"
+
+    document.body.innerHTML = code;
+
+    window.addEventListener('message', function(m) {
+      console.log('Got message from iframe', m.data);
+      window.opener.postMessage(m.data, '*');
+      window.close();
+    });
+  }
+</script>
 
 </body>
 </html>
