@@ -1,0 +1,15 @@
+<html>
+<body>
+
+  <a onclick="openPopup()" href="#">fdf</a>
+  <script>
+    function openPopup() {
+      w = window.open('iframer.html');
+      window.addEventListener('message', function(m) {
+        console.log("IT WORKED!", m)
+      });
+    }
+  </script>
+
+</body>
+</html>

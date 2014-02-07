@@ -1,0 +1,10 @@
+<html>
+<body>
+  <script>
+    setTimeout(function() {
+      //console.log("Posting message to parent");
+      window.parent.postMessage('iframeMessage', '*');
+    }, 200);
+  </script>
+</body>
+</html>
